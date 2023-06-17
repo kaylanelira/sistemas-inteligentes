@@ -9,9 +9,7 @@ class Food {
   
   updatePosition(){
     this.pos = createVector(random(width), random(height));
-    circle(this.pos.x, this.pos.y, this.radius);
-    fill(this.coloring[0], this.coloring[1], this.coloring[2]);
-    noStroke();
+    this.show();
   }
   
   show() {
