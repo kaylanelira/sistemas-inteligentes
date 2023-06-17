@@ -1,24 +1,24 @@
 let vehicle;
 let food;
-let isFoodOnScreen = false;
-let foodRadius = 20;
-let distances;
+let distance;
+let foodColor = 255;
 
 function setup() {
   createCanvas(400, 400);
   vehicle = new Vehicle(100, 100);
+  food = new Food(0, 0);
 }
 
 function draw() {
   // background
   background(0);
-  fill(255, 0, 0);
-  noStroke();
 
   // food
-  if (isFoodOnScreen) {
-    setFoodPosition();
-    isFoodOnScreen = true;
+  fill(foodColor, 0, 0);
+  noStroke();
+  food.show()
+  if (!food.isOnScreen) {
+    drawFood();
   }
   colide();
   
@@ -30,26 +30,21 @@ function draw() {
   vehicle.update();
 }
 
-function setFoodPosition() {
-  food = createVector(random(width), random(height));
-  
-  distances = vehicle.distance(food.x, food.y);
-  print(distances[0]);
-  
-  drawFood();
-}
-
 function colide() {
-  if (distances[0] <= foodRadius || distances[1] <= foodRadius || distances[2] <= foodRadius) {
-    isFoodOnScreen = false;
+  distance = vehicle.distance(food.pos.x, food.pos.y); 
+  if (distance <= food.radius) {
+    food.count++;
+    food.isOnScreen = false;
+    foodColor = 0;
+    print("Food count: " + food.count);
   } else {
-    drawFood();
+    foodColor = 255;
+    food.show();
   }
 }
 
 function drawFood() {
-  if (isFoodOnScreen) {
-    circle(food.x, food.y, foodRadius);
-  }
+  food.updatePosition();
+  food.isOnScreen = true;
 }
  
