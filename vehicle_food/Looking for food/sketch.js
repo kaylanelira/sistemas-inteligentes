@@ -14,8 +14,6 @@ function draw() {
   background(0);
 
   // food
-  fill(foodColor, 0, 0);
-  noStroke();
   food.show();
   if (!food.isOnScreen) {
     drawFood();
@@ -35,10 +33,8 @@ function verifyColision() {
   if (distance <= food.radius) {
     food.count++;
     food.isOnScreen = false;
-    foodColor = 0;
-    print("Food count: " + food.count);
+    print("Donut count: " + food.count);
   } else {
-    foodColor = 255;
     food.show();
   }
 }

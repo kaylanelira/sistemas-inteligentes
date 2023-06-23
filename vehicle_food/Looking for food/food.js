@@ -13,8 +13,12 @@ class Food {
   }
   
   show() {
+    fill('brown');
     circle(this.pos.x, this.pos.y, this.radius);
-    fill(this.coloring[0], this.coloring[1], this.coloring[2]);
+    fill('pink');
+    circle(this.pos.x, this.pos.y, this.radius-3);
+    fill('black');
+    circle(this.pos.x, this.pos.y, this.radius-12);
     noStroke();
   }
 }

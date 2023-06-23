@@ -9,7 +9,7 @@ class Vehicle {
     this.seekDirection = createVector(random(width), random(height));
     this.force = p5.Vector.sub(this.seekDirection, this.pos);
     this.fieldOfViewColor = color(255, 255, 0, 50); 
-    this.fieldOfViewRadius = 170;
+    this.fieldOfViewRadius = 180;
   }
   
   show() {
